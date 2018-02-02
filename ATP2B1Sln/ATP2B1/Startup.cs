@@ -9,6 +9,7 @@ namespace ATP2B1
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
         }
     }
 }
