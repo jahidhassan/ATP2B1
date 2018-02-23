@@ -1,0 +1,41 @@
+﻿@model ATP2B1.ViewModel.RandomMovieVM
+@{
+    ViewBag.Title = "Random";
+    var className = Model.Customers.Count > 5 ? "popular" : "normal";
+}
+
+<style>
+    .popular {
+        color: red
+    }
+
+    .normal {
+        color: greenyellow
+    }
+
+</style>
+
+<h2 class="@className">
+    @Model.Movie.Name
+</h2>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    @{
+        foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>@customer.ID</td>
+                <td>@customer.Name</td>
+            </tr>
+            
+        }
+
+    }
+
+</table>
+
+

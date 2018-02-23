@@ -1,0 +1,30 @@
+﻿@using ATP2B1.Models
+@model List<ATP2B1.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@Html.ActionLink("New", "New", new { Controller = "Customer" })
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Type</th>
+        <th>Discount</th>
+        <th>Detail</th>
+    </tr>
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@customer.Name</td>
+            <td>@customer.MobileNo</td>
+            <td>@customer.MembershipType.Name</td>
+            <td>@customer.MembershipType.Discount%</td>
+            <td>
+                @Html.ActionLink("Detail","Edit",new {Controller="Customer",id=customer.ID})
+            </td>
+        </tr>
+    }
+</table>

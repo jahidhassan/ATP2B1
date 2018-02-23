@@ -1,0 +1,43 @@
+﻿@model ATP2B1.ViewModel.DetailCustomerVM
+@{
+    ViewBag.Title = Model.Customer.ID==0?"New":"Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Detail</h2>
+@using (Html.BeginForm("Save", "Customer"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m=>m.Customer.Name)
+        @Html.TextBoxFor(m=>m.Customer.Name,new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MobileNo)
+        @Html.TextBoxFor(m => m.Customer.MobileNo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MembershipTypeID)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeID, new SelectList(Model.MembershipTypes,"ID","Name"), "Select Membership Type", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.BirthDate)
+        @Html.TextBoxFor(m => m.Customer.BirthDate,"{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Customer.IsSubscribeToMail) Is Subscribed To Mail?
+        </label>
+    </div>
+    <div>
+        <label class="radio-inline">
+            @Html.RadioButtonFor(m => m.Customer.Gender,"Male") Male
+        </label>
+        <label class="radio-inline">
+            @Html.RadioButtonFor(m => m.Customer.Gender, "Female") Female
+        </label>
+    </div>
+    <br/>
+    @Html.HiddenFor(m=>m.Customer.ID)
+    <button type="submit" class="btn btn-info">Save</button>
+}
+
+

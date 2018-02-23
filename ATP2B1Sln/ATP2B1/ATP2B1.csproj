@@ -196,16 +196,52 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802160814335_Initialize.cs" />
+    <Compile Include="Migrations\201802160814335_Initialize.Designer.cs">
+      <DependentUpon>201802160814335_Initialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802160827578_Customer_MobileNo_MailSubs.cs" />
+    <Compile Include="Migrations\201802160827578_Customer_MobileNo_MailSubs.Designer.cs">
+      <DependentUpon>201802160827578_Customer_MobileNo_MailSubs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802160835440_Customer_Override.cs" />
+    <Compile Include="Migrations\201802160835440_Customer_Override.Designer.cs">
+      <DependentUpon>201802160835440_Customer_Override.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802170654296_AddMembershipType.cs" />
+    <Compile Include="Migrations\201802170654296_AddMembershipType.Designer.cs">
+      <DependentUpon>201802170654296_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802170709197_ChangeCustomer_Type_DOB.cs" />
+    <Compile Include="Migrations\201802170709197_ChangeCustomer_Type_DOB.Designer.cs">
+      <DependentUpon>201802170709197_ChangeCustomer_Type_DOB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802170716201_MembershipTypeSeed.cs" />
+    <Compile Include="Migrations\201802170716201_MembershipTypeSeed.Designer.cs">
+      <DependentUpon>201802170716201_MembershipTypeSeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802230855313_CustomerGender.cs" />
+    <Compile Include="Migrations\201802230855313_CustomerGender.Designer.cs">
+      <DependentUpon>201802230855313_CustomerGender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\NewCustomerVM.cs" />
+    <Compile Include="ViewModel\RandomMovieVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -267,6 +303,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Movies\Random.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -278,6 +318,29 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802160814335_Initialize.resx">
+      <DependentUpon>201802160814335_Initialize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802160827578_Customer_MobileNo_MailSubs.resx">
+      <DependentUpon>201802160827578_Customer_MobileNo_MailSubs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802160835440_Customer_Override.resx">
+      <DependentUpon>201802160835440_Customer_Override.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802170654296_AddMembershipType.resx">
+      <DependentUpon>201802170654296_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802170709197_ChangeCustomer_Type_DOB.resx">
+      <DependentUpon>201802170709197_ChangeCustomer_Type_DOB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802170716201_MembershipTypeSeed.resx">
+      <DependentUpon>201802170716201_MembershipTypeSeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802230855313_CustomerGender.resx">
+      <DependentUpon>201802230855313_CustomerGender.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
