@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+</head>
+<body>
+<div class="element">div 1</div>
+<div id="myElement" style="background-color: darkblue; color: white;height: 200px">div 2</div>
+<div>div 3</div>
+<div>div 4</div>
+<input type="button" value="hide" onclick="hideClick()"/>
+</body>
+</html>
+
+
+<script>
+
+    function hideClick() {
+        $("#myElement").toggle(1000,
+            function() {
+                // do something once the element is shown/hidden
+            });
+    }
+    $(document).ready(function() {
+
+        
+
+    });
+
+
+</script>

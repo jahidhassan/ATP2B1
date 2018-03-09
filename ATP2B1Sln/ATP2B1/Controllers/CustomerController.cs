@@ -18,9 +18,20 @@ namespace ATP2B1.Controllers
             _context = new ApplicationDbContext();
         }
 
-        public ActionResult New()
+        public ActionResult Detail(int? id)
         {
-            var customer = new Customer();
+            Customer customer;
+            if (id.HasValue)
+            {
+                customer = _context.Customers.FirstOrDefault(c => c.ID == id.Value);
+                if (customer == null)
+                    return HttpNotFound("Invalid Customer ID");
+            }
+            else
+            {
+                customer = new Customer();
+            }
+
             var allMembershipTypes = _context.MembershipTypes.ToList();
 
             var vm = new DetailCustomerVM()
@@ -29,30 +40,25 @@ namespace ATP2B1.Controllers
                 MembershipTypes = allMembershipTypes
             };
 
-            return View("Detail",vm);
-        }
-
-        public ActionResult Edit(int id)
-        {
-            var customer = _context.Customers.FirstOrDefault(c=>c.ID==id);
-
-            if (customer == null)
-                return HttpNotFound("Invalid Customer ID");
-
-            var allMembershipTypes = _context.MembershipTypes.ToList();
-
-            var vm = new DetailCustomerVM()
-            {
-                Customer = customer,
-                MembershipTypes = allMembershipTypes
-            };
-
-            return View("Detail",vm);
+            return View("Detail", vm);
         }
 
         [HttpPost]
-        public ActionResult Save(Customer customer)
+        [ValidateAntiForgeryToken]
+        public ActionResult Detail(Customer customer)
         {
+
+            if (!ModelState.IsValid)
+            {
+                var vm = new DetailCustomerVM()
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("Detail", vm);
+            }
+
             if(customer.ID==0)
                 _context.Customers.Add(customer);
             else
@@ -72,6 +78,18 @@ namespace ATP2B1.Controllers
                 objToSave.IsSubscribeToMail = customer.IsSubscribeToMail;
             }
             _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var customer = _context.Customers.FirstOrDefault(c => c.ID == id);
+            if (customer == null)
+                return HttpNotFound("Invalid Customer ID");
+
+            _context.Customers.Remove(customer);
+            _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

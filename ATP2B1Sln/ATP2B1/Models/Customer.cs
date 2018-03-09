@@ -10,11 +10,12 @@ namespace ATP2B1.Models
     public class Customer
     {
         public int ID { get; set; }
-        [Required]
-        [StringLength(255)]
+        [Required(ErrorMessage = "Name Required")]
+        [StringLength(255,ErrorMessage = "Name Can't be more than 255 char")]
         public string Name { get; set; }
         [Required]
         [StringLength(25)]
+        [PhoneValidation]
         public string MobileNo { get; set; }
         public bool IsSubscribeToMail { get; set; }
         public MembershipType MembershipType { get; set; }
@@ -22,6 +23,7 @@ namespace ATP2B1.Models
         public int MembershipTypeID { get; set; }
 
         [Display(Name = "Date of Birth")]
+        [Min18Years]
         public DateTime BirthDate { get; set; }
 
         [Required]
